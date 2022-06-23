@@ -19,7 +19,7 @@ public class ToDoController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ToDo>>> Get()
     {
-        Console.WriteLine("IN GET METHOD");
+        Console.WriteLine("IN GET METHOD I need change");
         return await _context.ToDo.ToListAsync();
     }
 
