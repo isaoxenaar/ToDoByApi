@@ -4,7 +4,7 @@ using todoList;
 namespace todoList.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class ToDoController : ControllerBase
 {
     private readonly ILogger<ToDoController> _logger;
@@ -16,10 +16,34 @@ public class ToDoController : ControllerBase
         _context = context;
     }
 
-
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ToDo>>> Get()
     {
-        return await _context.ToDos.ToListAsync();
+        Console.WriteLine("IN GET METHOD");
+        return await _context.ToDo.ToListAsync();
+    }
+
+    [HttpGet("{id}")]
+
+    public async Task<ActionResult<ToDo>> GetOne(int id)
+    {
+        var newTodo = await _context.ToDo.FirstOrDefaultAsync(c => c.Id == id);
+        if(newTodo == null)
+        {
+            return NotFound();
+        }
+        return Ok(newTodo);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<ToDo>> PostToDo(ToDo todo)
+    {
+        if (!ModelState.IsValid) 
+        {
+            return BadRequest();
+        }
+        _context.ToDo.Add(todo);
+        await _context.SaveChangesAsync();
+        return CreatedAtAction(nameof(GetOne), new { id = todo.Id }, todo );
     }
 }

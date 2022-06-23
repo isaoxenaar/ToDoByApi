@@ -1,3 +1,5 @@
+#nullable disable
+
 using Microsoft.EntityFrameworkCore;
 using todoList;
 
@@ -8,5 +10,5 @@ using todoList;
         {
 
         }
-        public DbSet<ToDo> ToDos { get; set; }
+        public DbSet<ToDo> ToDo { get; set; }
     }
