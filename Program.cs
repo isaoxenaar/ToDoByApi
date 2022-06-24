@@ -24,7 +24,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://eloquent-semolina-74f647.netlify.app/"));
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
