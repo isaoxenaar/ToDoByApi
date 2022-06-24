@@ -47,3 +47,7 @@ public class ToDoController : ControllerBase
         return CreatedAtAction(nameof(GetOne), new { id = todo.Id }, todo );
     }
 }
+
+//usercontroller -> create, get
+//todolist controller -> create, get
+//subtodo controller -> create, get

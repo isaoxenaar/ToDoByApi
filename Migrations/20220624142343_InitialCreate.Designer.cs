@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace todoList.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220624142343_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,30 +52,6 @@ namespace todoList.Migrations
                     b.ToTable("SubTd");
                 });
 
-            modelBuilder.Entity("todoList.TdList", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TotalCost")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("TdList");
-                });
-
             modelBuilder.Entity("todoList.ToDo", b =>
                 {
                     b.Property<int>("Id")
@@ -99,25 +77,7 @@ namespace todoList.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TdListId");
-
                     b.ToTable("ToDo");
-                });
-
-            modelBuilder.Entity("todoList.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("todoList.SubTd", b =>
@@ -129,37 +89,9 @@ namespace todoList.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("todoList.TdList", b =>
-                {
-                    b.HasOne("todoList.User", null)
-                        .WithMany("TdLists")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("todoList.ToDo", b =>
-                {
-                    b.HasOne("todoList.TdList", null)
-                        .WithMany("ToDoItems")
-                        .HasForeignKey("TdListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("todoList.TdList", b =>
-                {
-                    b.Navigation("ToDoItems");
-                });
-
             modelBuilder.Entity("todoList.ToDo", b =>
                 {
                     b.Navigation("SubItems");
-                });
-
-            modelBuilder.Entity("todoList.User", b =>
-                {
-                    b.Navigation("TdLists");
                 });
 #pragma warning restore 612, 618
         }
