@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ABXT9n6/4pWtmXAYI1NCMAS1GH/nktYwjS73HvWJ5rgSx84/Bync2Ia7heHny3Hd+Nzmasp3FWNMSf/P8kRqEw==",
+  "dgSpecHash": "g54TOTMIGcQRi2OWUJ8dUddMxIHqtzJNW0pZeU05v3zqoK+Rmvw1ubIy+Gjs3uqMlrb31XZQlARA1JjOw3g+rQ==",
   "success": true,
   "projectFilePath": "/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/todoList.csproj",
   "expectedPackageFiles": [
+    "/home/isaoxenaar/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/home/isaoxenaar/.nuget/packages/bouncycastle.netcore/1.8.3/bouncycastle.netcore.1.8.3.nupkg.sha512",
     "/home/isaoxenaar/.nuget/packages/google.protobuf/3.11.4/google.protobuf.3.11.4.nupkg.sha512",
     "/home/isaoxenaar/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",

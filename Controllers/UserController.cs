@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using todoList;
+using todoList.Data;
+using todoList.DTO;
 namespace todoList.Controllers;
 
 [ApiController]
@@ -10,10 +11,38 @@ public class UserController : ControllerBase
     private readonly ILogger<UserController> _logger;
     private readonly Context _context;
 
-    public UserController(ILogger<UserController> logger, Context context)
+    private readonly IUserRepository _repository;
+
+    public UserController(ILogger<UserController> logger, Context context, IUserRepository repository)
     {
         _logger = logger;
         _context = context;
+        _repository = repository;
+    }
+
+    [HttpPost("register")]
+
+    public IActionResult Register(RegisterDto dto)
+    {
+        var user = new User {
+
+            Name = dto.Name,
+            Email = dto.Email,
+            Password =BCrypt.Net.BCrypt.HashPassword(dto.Password)
+        };
+        _repository.Create(user);
+        return Created("succes", _repository.Create(user));
+    }
+
+    [HttpPost("login")]
+
+    public IActionResult Login(LoginDto dto)
+    {
+        var user = _repository.GetByEmail(dto.Email);
+        if(user == null)
+            return BadRequest(new {message="user does not exist"});
+        return Ok(user);
+        
     }
 
     [HttpGet]

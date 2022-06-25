@@ -71,3 +71,4 @@
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/Renci.SshNet.dll
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/SshNet.Security.Cryptography.dll
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/System.Xml.XPath.XmlDocument.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/BCrypt.Net-Next.dll
