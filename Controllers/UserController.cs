@@ -24,8 +24,9 @@ public class UserController : ControllerBase
 
     [HttpPost("register")]
 
-    public IActionResult Register(RegisterDto dto)
+    public IActionResult Register(User dto)
     {
+        System.Console.WriteLine("hello from register");
         var user = new User {
 
             Name = dto.Name,
@@ -96,7 +97,7 @@ public class UserController : ControllerBase
         return await _context.User.ToListAsync();
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("/getOne/{id}")]
 
     public async Task<ActionResult<User>> GetOne(int id)
     {
