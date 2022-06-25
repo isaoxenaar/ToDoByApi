@@ -24,7 +24,7 @@ public class UserController : ControllerBase
 
     [HttpPost("register")]
 
-    public IActionResult Register(User dto)
+    public IActionResult Register(RegisterDto dto)
     {
         System.Console.WriteLine("hello from register");
         var user = new User {
@@ -93,7 +93,6 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<User>>> Get()
     {
-        Console.WriteLine("IN GET METHOD I need change");
         return await _context.User.ToListAsync();
     }
 
