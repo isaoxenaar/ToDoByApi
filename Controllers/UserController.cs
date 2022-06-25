@@ -65,6 +65,30 @@ public class UserController : ControllerBase
         
     }
 
+    [HttpGet("user")]
+    public IActionResult User()
+    {
+        try{
+            var jwt = Request.Cookies["jwt"];
+            var token = _jwtservice.Verify(jwt);
+            int userId = int.Parse(token.Issuer);
+            var user = _repository.GetById(userId);
+            return Ok(user);
+        }
+        catch(Exception e){
+            return Unauthorized();
+        }
+    }
+
+    [HttpPost("logout")]
+    public IActionResult Logout()
+    {
+        Response.Cookies.Delete("jwt");
+        return Ok(new {
+            message = "logged out"
+        });
+    }
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<User>>> Get()
     {

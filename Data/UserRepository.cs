@@ -13,7 +13,14 @@ namespace todoList.Data
         }
 
         public User GetByEmail(string email) {
+
             return _context.User.FirstOrDefault(user => user.Email == email);
         }
+
+        public User GetById(int id) {
+
+            return _context.User.FirstOrDefault(user => user.Id == id);
+        }
+
     }
 }
