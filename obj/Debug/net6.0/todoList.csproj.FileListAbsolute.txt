@@ -72,3 +72,5 @@
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/SshNet.Security.Cryptography.dll
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/System.Xml.XPath.XmlDocument.dll
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/BCrypt.Net-Next.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/JWT.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/Newtonsoft.Json.dll

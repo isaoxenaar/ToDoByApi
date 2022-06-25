@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using todoList.Data;
 using todoList.DTO;
+using todoList.Jwt;
 namespace todoList.Controllers;
 
 [ApiController]
@@ -10,14 +11,15 @@ public class UserController : ControllerBase
 {
     private readonly ILogger<UserController> _logger;
     private readonly Context _context;
-
     private readonly IUserRepository _repository;
+    private readonly JwtService _jwtservice;
 
-    public UserController(ILogger<UserController> logger, Context context, IUserRepository repository)
+    public UserController(ILogger<UserController> logger, Context context, IUserRepository repository, JwtService jwtService)
     {
         _logger = logger;
         _context = context;
         _repository = repository;
+        _jwtservice = jwtService;
     }
 
     [HttpPost("register")]
@@ -39,9 +41,27 @@ public class UserController : ControllerBase
     public IActionResult Login(LoginDto dto)
     {
         var user = _repository.GetByEmail(dto.Email);
+
         if(user == null)
             return BadRequest(new {message="user does not exist"});
-        return Ok(user);
+
+        if(!BCrypt.Net.BCrypt.Verify(dto.Password, user.Password))
+        {
+            return BadRequest(new {message="wrong password"});
+        }
+
+        var jwt = _jwtservice.Generate(user.Id);
+
+        CookieOptions cookieOptions = new CookieOptions
+        {
+            HttpOnly = true
+        };
+        
+        Response.Cookies.Append("jwt", jwt, cookieOptions);
+
+        return Ok(new {
+            message = "succes"
+        });
         
     }
 
