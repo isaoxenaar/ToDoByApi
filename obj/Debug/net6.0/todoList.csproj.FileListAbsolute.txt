@@ -59,3 +59,15 @@
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/obj/Debug/net6.0/ref/todoList.dll
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/Humanizer.dll
 /home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Design.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/BouncyCastle.Crypto.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/Google.Protobuf.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/K4os.Compression.LZ4.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/K4os.Compression.LZ4.Streams.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/K4os.Hash.xxHash.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/MySql.Data.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/Ubiety.Dns.Core.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/Zstandard.Net.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/MySql.Data.EntityFrameworkCore.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/Renci.SshNet.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/SshNet.Security.Cryptography.dll
+/home/isaoxenaar/Desktop/Salt/PGP/ToDoList/todoList/bin/Debug/net6.0/System.Xml.XPath.XmlDocument.dll
