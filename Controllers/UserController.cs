@@ -26,6 +26,7 @@ public class UserController : ControllerBase
 
     public IActionResult Register(RegisterDto dto)
     {
+        System.Console.WriteLine("hello from register");
         var user = new User {
 
             Name = dto.Name,
