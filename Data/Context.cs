@@ -19,6 +19,7 @@ using todoList;
         {
             modelBuilder.Entity<ToDo>().HasMany(s => s.SubItems).WithOne().HasForeignKey(a => a.ToDoId);
             modelBuilder.Entity<User>().HasMany(s => s.TdLists).WithOne().HasForeignKey(a => a.UserId);
+            modelBuilder.Entity<User>(entity => {entity.HasIndex(e => e.Email).IsUnique();});
             modelBuilder.Entity<TdList>().HasMany(s => s.ToDoItems).WithOne().HasForeignKey(a => a.TdListId);
         }
     }
