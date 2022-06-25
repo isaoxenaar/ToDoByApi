@@ -7,7 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddCors();
 
 if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
     builder.Services.AddDbContext<Context>(options =>
@@ -19,7 +18,7 @@ else
 );
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<JwtService>();
-
+builder.Services.AddCors();
 
 builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
@@ -37,18 +36,14 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseSwagger();
-app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            c.RoutePrefix = string.Empty;
-        });
+app.UseSwaggerUI();
 app.UseAuthentication();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
