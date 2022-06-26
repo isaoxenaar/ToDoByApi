@@ -7,9 +7,8 @@ namespace todoList.Data
             _context = context;
         }
         public User Create(User user) {
-            Console.WriteLine("IN USER CREATE", user.Id);
             _context.User.Add(user);
-            _context.SaveChanges();
+            user.Id = _context.SaveChanges();
             return user;
         }
 
