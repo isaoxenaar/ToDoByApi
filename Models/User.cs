@@ -7,7 +7,7 @@ public class User {
     public int Id {get;set;}
     public string? Name {get;set;}
     public string? Email {get;set;}
-    [JsonIgnore]
+    // [JsonIgnore]
     public string? Password {get;set;}
     public List<TdList>? TdLists {get;set;}
 }
