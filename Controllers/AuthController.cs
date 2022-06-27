@@ -22,9 +22,9 @@ public class AuthController : ControllerBase
         _jwtservice = jwtService;
     }
 
-    [HttpPost]
+    [HttpPost("register")]
 
-    public IActionResult Register(RegisterDto dto)
+    public async Task<ActionResult<User>> Register(RegisterDto dto)
     {
         var user = new User {
 
@@ -32,8 +32,10 @@ public class AuthController : ControllerBase
             Email = dto.Email,
             Password =BCrypt.Net.BCrypt.HashPassword(dto.Password)
         };
-        _repository.Create(user);
-        return Created("succes", _repository.Create(user));
+        _context.User.Add(user);
+        await _context.SaveChangesAsync();
+        // _repository.Create(user);
+        return Created("succes", user);
     }
 
     [HttpPost("login")]
