@@ -34,7 +34,19 @@ public class ToDoController : ControllerBase
         }
         return Ok(newTodo);
     }
-
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> ChangeProjectUrl(int id, [FromBody]bool done) {
+        var Project = await _context.ToDo.FirstOrDefaultAsync(p => p.Id == id);
+        if(Project == null) {
+            return NotFound();
+        }
+        if(!ModelState.IsValid) {
+            return BadRequest();
+        }
+        Project.Done = done;
+        await _context.SaveChangesAsync();
+        return Ok(Project);
+    }
     [HttpPost]
     public async Task<ActionResult<ToDo>> PostToDo(ToDo todo)
     {
