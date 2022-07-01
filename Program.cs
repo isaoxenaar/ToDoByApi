@@ -61,12 +61,11 @@ app.UseSwaggerUI(c => {
 );
 
 app.UseAuthentication();
-app.UseAuthorization();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
+app.UseAuthorization();
 app.UseEndpoints(x => x.MapControllers());
 // app.MapControllerRoute(
 //     name: "default",

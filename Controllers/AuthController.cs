@@ -67,7 +67,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult User()
+    public IActionResult getUser()
     {
         try{
             var jwt = Request.Cookies["jwt"];
