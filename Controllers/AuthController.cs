@@ -34,7 +34,7 @@ public class AuthController : ControllerBase
         };
         _context.User.Add(user);
         await _context.SaveChangesAsync();
-        // _repository.Create(user);
+        _repository.Create(user);
         return Created("succes", user);
     }
 
@@ -64,7 +64,6 @@ public class AuthController : ControllerBase
         return Ok(new {
             message = "succes"
         });
-        
     }
 
     [HttpGet]
@@ -72,7 +71,10 @@ public class AuthController : ControllerBase
     {
         try{
             var jwt = Request.Cookies["jwt"];
-            var token = _jwtservice.Verify(jwt);
+            if(jwt == null) {
+                return BadRequest();
+            }
+            var token = _jwtservice.Verify(jwt); 
             int userId = int.Parse(token.Issuer);
             var user = _repository.GetById(userId);
             return Ok(user);
