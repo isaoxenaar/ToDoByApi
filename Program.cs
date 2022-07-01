@@ -60,11 +60,11 @@ app.UseSwaggerUI(c => {
 }
 );
 
-app.UseAuthentication();
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseEndpoints(x => x.MapControllers());
 // app.MapControllerRoute(

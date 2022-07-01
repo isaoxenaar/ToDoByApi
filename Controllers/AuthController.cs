@@ -54,6 +54,7 @@ public class AuthController : ControllerBase
 
         var jwt = _jwtservice.Generate(user.Id);
 
+
         CookieOptions cookieOptions = new CookieOptions
         {
             HttpOnly = true
@@ -62,7 +63,7 @@ public class AuthController : ControllerBase
         Response.Cookies.Append("jwt", jwt, cookieOptions);
 
         return Ok(new {
-            message = "succes"
+            message = jwt
         });
     }
 

@@ -26,7 +26,6 @@ public class UserController : ControllerBase
     public async Task<ActionResult<User>> GetOne(int id)
     {
         var newUser = await _context.User.FirstOrDefaultAsync(c => c.Id == id);
-        Console.WriteLine("user is null?" + newUser.Id);
         if(newUser == null)
         {
             return NotFound();
